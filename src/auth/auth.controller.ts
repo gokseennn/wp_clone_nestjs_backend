@@ -39,4 +39,15 @@ export class AuthController {
             throw new BadRequestException('Verification failed');
         }
     }
+    @Post('resend-code')
+    reSendCode(@Res() res: Response, @Req() req: Request) {
+        const phoneNumber = req.cookies['phoneNumber'];
+        const expires = new Date();
+        const isSend = this.authService.sendCode(phoneNumber);
+        if (isSend) {
+            return res.json({ "status": "success", "message": "Code sent" });
+        } else {
+            return res.status(500).json({ "status": "error", "message": "Failed to send code" });
+        }
+    }
 }
