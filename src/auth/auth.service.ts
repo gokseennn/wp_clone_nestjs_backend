@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as Twilio from 'twilio';
 import { ConfigService } from '@nestjs/config';
-import { User } from 'src/model/user_model';
+import { User } from 'src/auth/model/user_model';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 
